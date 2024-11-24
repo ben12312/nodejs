@@ -1,0 +1,50 @@
+[
+    {
+        "query": "CREATE DATABASE `nutech`"
+    },
+    {
+        "query": "CREATE TABLE `users` (
+                    `id` int NOT NULL AUTO_INCREMENT,
+                    `email` varchar(100) NOT NULL,
+                    `first_name` varchar(100) NOT NULL,
+                    `last_name` varchar(100) DEFAULT NULL,
+                    `profile_image` varchar(100) DEFAULT NULL,
+                    `password` varchar(100) DEFAULT NULL,
+                    PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;"
+    },
+    {
+        "query": "CREATE TABLE `banner` (
+                    `id` int NOT NULL AUTO_INCREMENT,
+                    `banner_name` varchar(100) DEFAULT NULL,
+                    `banner_image` varchar(100) DEFAULT NULL,
+                    `description` varchar(100) DEFAULT NULL,
+                    PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;"
+    },
+    {
+        "query": "CREATE TABLE `transaction` (
+                    `id` int NOT NULL AUTO_INCREMENT,
+                    `transaction_type` varchar(50) DEFAULT NULL,
+                    `user_id` int NOT NULL,
+                    `balance` int DEFAULT '0',
+                    `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    `invoice_number` varchar(100) DEFAULT NULL,
+                    `description` varchar(100) DEFAULT NULL,
+                    PRIMARY KEY (`id`),
+                    KEY `transaction_FK` (`user_id`),
+                    CONSTRAINT `transaction_FK` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;"
+    },
+    {
+        "query": "CREATE TABLE `services` (
+                    `id` int NOT NULL AUTO_INCREMENT,
+                    `service_code` varchar(100) DEFAULT NULL,
+                    `service_name` varchar(100) DEFAULT NULL,
+                    `service_icon` varchar(100) DEFAULT NULL,
+                    `service_tariff` int DEFAULT '0',
+                    PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;"
+    }
+    
+]

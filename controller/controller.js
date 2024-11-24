@@ -87,7 +87,7 @@ class AppsController {
     static async infoService(req, res, next) {
         let user =  await authorizationCheck(req, res);
         if (!user) return res.status(401).send(resTemplate(108,"Token tidak tidak valid atau kadaluwarsa", null));
-        let services = await asynQuery(`SELECT * from services`);
+        let services = await asynQuery(`SELECT service_code,service_name,service_icon,service_tariff from services`);
         // GET FROM DB
         res.status(200).send(resTemplate(0, "Sukses", services));
     }
