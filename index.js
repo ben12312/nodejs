@@ -7,6 +7,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(moduleRouter);
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`)
-})
+app.listen(port, () => console.log(`App listening on port ${port}`))
